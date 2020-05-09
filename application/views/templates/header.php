@@ -3,7 +3,9 @@
 		<title>Blog</title>
 		<link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
 		<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+
+		<script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,11 +19,16 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>">Kezdő oldal<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>posts">Posztok</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>about">Oldalról</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav mr-sm-2">
+				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>posts/create">Post írás</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">

@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo  form_open('posts/create'); ?>
+<?php echo  form_open_multipart('posts/create'); ?>
 		<div class="form-group">
 			<label>Cím</label>
 			<input type="text" class="form-control"  name="title" placeholder="Cím">
@@ -10,8 +10,20 @@
 		</div>
 		<div class="form-group">
 			<label for="exampleSelect2">Leírás</label>
-			<textarea  class="form-control" name="body"></textarea>
+			<textarea id="editor" class="form-control" name="body" rows="25"></textarea>
 			<small id="emailHelp" class="form-text text-muted">Ide írd a postot</small>
+		</div>
+		<label>Kategóriák</label>
+		<select name="category_id" class="form-control">
+		<?php foreach ($categories as $category): ?>
+			<option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+		<?php endforeach; ?>
+		</select>
+		<br>
+		<div class="form-group">
+			<label for="exampleInputFile">File feltöltés</label>
+			<input type="file" class="form-control-file" name="userfile" size="20">
+			<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
 		</div>
 		<button type="submit" class="btn btn-primary">Küld</button>
 </form>
