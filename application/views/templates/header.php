@@ -23,12 +23,18 @@
 					<a class="nav-link" href="<?php echo base_url(); ?>posts">Posztok</a>
 				</li>
 				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>categories">Kategoriák</a>
+				</li>
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>about">Oldalról</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav mr-sm-2">
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>posts/create">Post írás</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>categories/create">Kategória készítés</a>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
