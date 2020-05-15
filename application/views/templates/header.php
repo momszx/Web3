@@ -31,6 +31,9 @@
 			</ul>
 			<ul class="navbar-nav mr-sm-2">
 				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>users/register">Regisztráció</a>
+				</li>
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>posts/create">Post írás</a>
 				</li>
 				<li class="nav-item active">
@@ -44,5 +47,24 @@
 		</div>
 	</nav>
 	<div class="container">
+		<?php if($this->session->flashdata('user_registered')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('post_created')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('post_created').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('category_created')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('post_updated')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-warning">'.$this->session->flashdata('post_updated').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('post_delete')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('post_delete').'</p>'; ?>
+		<?php endif; ?>
 
 

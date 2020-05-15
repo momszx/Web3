@@ -16,6 +16,7 @@
 				$this->load->view('templates/footer');
 			}else{
 				$this->category_model->create_category();
+				$this->session->set_flashData('category_created','Sikeresen kategória létrehozás');
 				redirect('categories');
 			}
 		}
