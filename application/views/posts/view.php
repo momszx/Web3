@@ -4,11 +4,13 @@
 <div class="post-body">
 	<?php echo  $post['body']; ?>
 </div>
-<hr>
-<a class="btn btn-warning pull-left" href=<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>>Szerkesztés</a>
-<?php echo form_open('/posts/delete/'.$post['id']); ?>
-	<input type="submit" value="Post törlése" class="btn btn-outline-danger">
-</form>
+<?php if($this->session->userdata('user_id')==$post['user_id']): ?>
+	<hr>
+	<a class="btn btn-warning pull-left" href=<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>>Szerkesztés</a>
+	<?php echo form_open('/posts/delete/'.$post['id']); ?>
+		<input type="submit" value="Post törlése" class="btn btn-outline-danger">
+	</form>
+<?php endif; ?>
 <hr>
 <?php if($comments): ?>
 	<?php foreach ($comments as $comment) : ?>
@@ -18,7 +20,7 @@
 		</div>
 	<?php endforeach; ?>
 <?php else: ?>
-	<p>Légy te az első aki hozzászól</p>
+	<h2>Légy te az első aki hozzászól</h2>
 <?php endif; ?>
 <hr>
 <h3>Szólj hozzá</h3>

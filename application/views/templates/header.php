@@ -30,15 +30,25 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav mr-sm-2">
+				<?php if(!$this->session->userdata('logged_in')):?>
+				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>users/login">Bejelentkezés</a>
+				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>users/register">Regisztráció</a>
 				</li>
+				<?php endif; ?>
+				<?php if($this->session->userdata('logged_in')):?>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>posts/create">Post írás</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>categories/create">Kategória készítés</a>
 				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="<?php echo base_url(); ?>users/logout">Kijelentkezés</a>
+				</li>
+				<?php endif; ?>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Keresés">
@@ -59,12 +69,28 @@
 			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
 		<?php endif; ?>
 
+		<?php if($this->session->flashdata('user_loggedin')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('user_loggedout')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
+		<?php endif; ?>
+
 		<?php if($this->session->flashdata('post_updated')): ?>
 			<?php echo '<p class="alert alert-dismissible alert-warning">'.$this->session->flashdata('post_updated').'</p>'; ?>
 		<?php endif; ?>
 
 		<?php if($this->session->flashdata('post_delete')): ?>
 			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('post_delete').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('login_failed')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
+		<?php endif; ?>
+
+		<?php if($this->session->flashdata('access_denied')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('access_denied').'</p>'; ?>
 		<?php endif; ?>
 
 

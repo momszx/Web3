@@ -8,6 +8,10 @@
 			$this->load->view('templates/footer');
 		}
 		public  function  create(){
+			if (!$this->session->userdata('logged_in')){
+				$this->session->set_flashData('access_denied','Először jelentkezbe');
+				redirect('users/login');
+			}
 			$data['title'] ='Kategória készítése';
 			$this->form_validation->set_rules('name','Name','required');
 			if($this->form_validation->run()==FALSE){

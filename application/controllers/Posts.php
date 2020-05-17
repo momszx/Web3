@@ -23,6 +23,10 @@ class Posts extends CI_Controller{
 		$this->load->view('templates/footer');
 	}
 	public function  create(){
+		if (!$this->session->userdata('logged_in')){
+			$this->session->set_flashData('access_denied','Először jelentkezbe');
+			redirect('users/login');
+		}
 		$data['title'] = 'Poszt készítése';
 
 		$data['categories']=$this->post_model->get_categories();
@@ -55,11 +59,27 @@ class Posts extends CI_Controller{
 		}
 	}
 	public function delete($id){
+		if (!$this->session->userdata('logged_in')){
+			$this->session->set_flashData('access_denied','Először jelentkezbe');
+			redirect('users/login');
+		}
+		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']){
+			$this->session->set_flashData('access_denied','Ez nem a te postod');
+			redirect('posts');
+		}
 		$this->post_model->delete_post($id);
 		$this->session->set_flashData('post_delete','Post törölve');
 		redirect('posts');
 	}
 	public  function edit($slug){
+		if (!$this->session->userdata('logged_in')){
+			$this->session->set_flashData('access_denied','Először jelentkezbe');
+			redirect('users/login');
+		}
+		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']){
+			$this->session->set_flashData('access_denied','Ez nem a te postod');
+			redirect('posts');
+		}
 		$data['post'] = $this->post_model->get_posts($slug);
 		$data['categories']=$this->post_model->get_categories();
 		if(empty($data['post'])){
