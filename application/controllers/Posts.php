@@ -1,8 +1,14 @@
 <?php
-class Posts extends CI_Controller{
-	public function index(){
-		$data['title'] = 'Utolsó postok';
-		$data['posts'] =$this->post_model->get_posts();
+class  Posts extends CI_Controller{
+	public function index($offset=0){
+		$config['base_url'] = base_url() . 'posts/index/';
+		$config['total_rows'] = $this->db->count_all('posts');
+		$config['per_page'] = 3;
+		$config['uri_segment'] = 3;
+		$config['attributes'] = array('class' => 'pagination-link');
+		$this->pagination->initialize($config);
+		$data['title'] = 'Utolsó posztok';
+		$data['posts'] =$this->post_model->get_posts(false,$config['per_page'],$offset);
 
 		$this->load->view('templates/header');
 		$this->load->view('posts/index', $data);

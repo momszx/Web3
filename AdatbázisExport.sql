@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Máj 18. 19:40
--- Kiszolgáló verziója: 10.4.11-MariaDB
--- PHP verzió: 7.4.5
+-- Létrehozás ideje: 2020. Máj 19. 20:26
+-- Kiszolgáló verziója: 10.4.8-MariaDB
+-- PHP verzió: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,8 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `blog`
 --
-CREATE DATABASE IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `blog`;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -31,6 +41,7 @@ USE `blog`;
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,11 +50,12 @@ CREATE TABLE `categories` (
 -- A tábla adatainak kiíratása `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `created_at`) VALUES
-(1, 'Xbox', '2020-05-09 15:25:44'),
-(2, 'Kibertámadás', '2020-05-09 15:25:44'),
-(3, 'Nincs a listán a kategóriája', '2020-05-09 15:50:22'),
-(4, 'Kategoria test', '2020-05-09 18:14:44');
+INSERT INTO `categories` (`id`, `user_id`, `name`, `created_at`) VALUES
+(1, 1, 'Xbox', '2020-05-09 15:25:44'),
+(2, 1, 'Kibertámadás', '2020-05-09 15:25:44'),
+(3, 2, 'Nincs a listán a kategóriája', '2020-05-09 15:50:22'),
+(4, 2, 'Kategoria test', '2020-05-09 18:14:44'),
+(7, 1, 'awedad', '2020-05-19 17:16:48');
 
 -- --------------------------------------------------------
 
@@ -132,6 +144,12 @@ INSERT INTO `users` (`id`, `name`, `zipcode`, `email`, `username`, `password`, `
 --
 
 --
+-- A tábla indexei `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- A tábla indexei `categories`
 --
 ALTER TABLE `categories`
@@ -160,10 +178,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT a táblához `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT a táblához `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `comments`

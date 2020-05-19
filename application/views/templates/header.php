@@ -3,7 +3,7 @@
 		<title>Blog</title>
 		<link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
 		<link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/style.css">
 
 		<script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
 	</head>
@@ -81,6 +81,10 @@
 			<?php echo '<p class="alert alert-dismissible alert-warning">'.$this->session->flashdata('post_updated').'</p>'; ?>
 		<?php endif; ?>
 
+		<?php if($this->session->flashdata('category_delete')): ?>
+			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('category_delete').'</p>'; ?>
+		<?php endif; ?>
+
 		<?php if($this->session->flashdata('post_delete')): ?>
 			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('post_delete').'</p>'; ?>
 		<?php endif; ?>
@@ -92,5 +96,6 @@
 		<?php if($this->session->flashdata('access_denied')): ?>
 			<?php echo '<p class="alert alert-dismissible alert-danger">'.$this->session->flashdata('access_denied').'</p>'; ?>
 		<?php endif; ?>
+
 
 

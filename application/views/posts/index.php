@@ -6,7 +6,7 @@
 			<img class="post-thumb" src="<?php echo site_url(); ?>assets/images/posts/<?php echo $post['post_image']; ?>";>
 		</div>
 		<div class="col-md-9">
-			<small class="post-date">Írva: <?php echo $post['created_at']; ?> <strong><?php echo $post['name']; ?> kategiriában</strong></small>
+			<small class="post-date">Írva: <?php echo $post['created_at']; ?> <strong class="badge badge-pill badge-success"><?php echo $post['name']; ?></strong><strong> kategiriában</strong></small>
 			<br>
 			<?php echo word_limiter($post['body'],50); ?>
 			<br>
@@ -16,5 +16,7 @@
 			<br>
 		</div>
 	</div>
-	
 <?php endforeach; ?>
+<div class="pagination-links">
+	<?php echo $this->pagination->create_links(); ?>
+</div>

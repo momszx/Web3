@@ -31,4 +31,17 @@
 			$this->load->view('posts/index',$data);
 			$this->load->view('templates/footer');
 		}
+		public function delete($id){
+			if (!$this->session->userdata('logged_in')){
+				$this->session->set_flashData('access_denied','Először jelentkezbe');
+				redirect('users/login');
+			}
+			if ($this->session->userdata('user_id') != $this->category_model->get_category($id)->user_id){
+				$this->session->set_flashData('access_denied','Ez nem a te kategoriád');
+				redirect('categories');
+			}
+			$this->category_model->delete_category($id);
+			$this->session->set_flashData('category_delete','Kategória törölve');
+			redirect('categories');
+		}
 	}
