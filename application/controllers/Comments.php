@@ -4,10 +4,6 @@
 class Comments extends CI_Controller
 {
 	public  function create($post_id){
-		if (!$this->session->userdata('logged_in')){
-			$this->session->set_flashData('access_denied','Először jelentkezbe');
-			redirect('users/login');
-		}
 		$slug = $this->input->post('slug');
 		$data['post'] = $this->post_model->get_posts($slug);
 

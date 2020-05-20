@@ -69,7 +69,7 @@ class  Posts extends CI_Controller{
 			$this->session->set_flashData('access_denied','Először jelentkezbe');
 			redirect('users/login');
 		}
-		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']){
+		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']||$this->session->userdata('isAdmin')){
 			$this->session->set_flashData('access_denied','Ez nem a te postod');
 			redirect('posts');
 		}
@@ -82,7 +82,7 @@ class  Posts extends CI_Controller{
 			$this->session->set_flashData('access_denied','Először jelentkezbe');
 			redirect('users/login');
 		}
-		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']){
+		if ($this->session->userdata('user_id')!=$this->post_model->get_posts($slug)['user_id']||$this->session->userdata('isAdmin')){
 			$this->session->set_flashData('access_denied','Ez nem a te postod');
 			redirect('posts');
 		}

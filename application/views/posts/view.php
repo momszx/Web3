@@ -4,7 +4,7 @@
 <div class="post-body">
 	<?php echo  $post['body']; ?>
 </div>
-<?php if($this->session->userdata('user_id')==$post['user_id']): ?>
+<?php if(($this->session->userdata('user_id')==$post['user_id'])||$this->session->userdata('isAdmin')): ?>
 	<hr>
 	<a class="btn btn-warning pull-left" href=<?php echo base_url(); ?>posts/edit/<?php echo $post['slug']; ?>>Szerkesztés</a>
 	<?php echo form_open('/posts/delete/'.$post['id']); ?>
@@ -39,6 +39,6 @@
 	<textarea name="body" class="form-control"></textarea>
 </div>
 <input type="hidden" name="slug" value="<?php echo $post['slug']; ?>">
-<button class="btn btn-primary" type="submit">Submit</button>
+<button class="btn btn-primary" type="submit">Küld</button>
 </form>
 

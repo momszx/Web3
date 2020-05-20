@@ -5,7 +5,7 @@
 		<a href="<?php echo site_url('/categories/posts/'.$category['id']); ?>">
 			<?php echo $category['name']; ?>
 		</a>
-		<?php if($this->session->userdata('user_id') == $category['user_id']): ?>
+		<?php if(($this->session->userdata('user_id') == $category['user_id'])||$this->session->userdata('isAdmin')): ?>
 			<form class="delete" action="categories/delete/<?php echo $category['id']; ?>" method="post">
 				<input type="submit" class="btn btn-danger" value="[X]">
 			</form>

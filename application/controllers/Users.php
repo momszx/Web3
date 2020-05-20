@@ -49,11 +49,18 @@ class Users extends CI_Controller
 			$username = $this->input->post('username');
 			$password = md5($this->input->post('password'));
 			$user_id = $this->user_model->login($username, $password);
+			$admin=$this->admin_model->get_admin($user_id);
+			$isAdmin=false;
+			if(!empty($admin)){
+				$isAdmin=true;
+			}
+			console.log("asd");
 			if($user_id){
 				$user_data = array(
 					'user_id' => $user_id,
 					'username' => $username,
-					'logged_in' => true
+					'logged_in' => true,
+					'isAdmin'=>$isAdmin
 				);
 				$this->session->set_userdata($user_data);
 				$this->session->set_flashData('user_loggedin','Sikeres Bejelentkezés');
@@ -70,6 +77,7 @@ class Users extends CI_Controller
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('isAdmin');
 		$this->session->set_flashdata('user_loggedout', 'Sikeresen kijelentkeztél');
 		redirect('posts');
 	}

@@ -23,7 +23,7 @@
 		<div class="form-group">
 			<label for="exampleInputFile">File feltöltés</label>
 			<input type="file" class="form-control-file" name="userfile" size="20">
-			<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+			<small id="fileHelp" class="form-text text-muted">Tölts fel képet a posthoz</small>
 		</div>
 		<button type="submit" class="btn btn-primary">Küld</button>
 </form>

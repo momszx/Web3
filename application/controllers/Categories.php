@@ -36,7 +36,7 @@
 				$this->session->set_flashData('access_denied','Először jelentkezbe');
 				redirect('users/login');
 			}
-			if ($this->session->userdata('user_id') != $this->category_model->get_category($id)->user_id){
+			if (($this->session->userdata('user_id') != $this->category_model->get_category($id)->user_id)||!$this->session->userdata('isAdmin')){
 				$this->session->set_flashData('access_denied','Ez nem a te kategoriád');
 				redirect('categories');
 			}

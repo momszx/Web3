@@ -4,12 +4,12 @@
 			<div class="form-group">
 				<label>Felhasználónév</label>
 				<input type="text" class="form-control" placeholder="Felhasználónév" name="username">
-				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				<small id="emailHelp" class="form-text text-muted">Ide a felhasználónevedett írd amit regisztrációkor megadtál</small>
 			</div>
 			<div class="form-group">
 				<label>Jelszó</label>
 				<input type="password" class="form-control" placeholder="Jelszó" name="password">
-				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				<small id="emailHelp" class="form-text text-muted">Ide a jelszavadat írd amit regisztrációkor megadtál</small>
 			</div>
 			<button type="submit" class="btn btn-primary">Bejelentkezés</button>
 		</div>
